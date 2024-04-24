@@ -1,0 +1,368 @@
+@import './custom.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* MODAL STYLE DESIGN */
+.modal-title, .modal-body {
+    color: #fff;
+}
+
+/* TEAMS PAGE STYLE DESIGN */
+.team-body {
+    padding: 20px;
+    background-color: #3b6064;
+}
+
+#team-table {
+    width: 100%;
+}
+
+@media screen and (max-width: 960px) {
+    // .team-body table tbody tr th, td {
+    //     font-size: .5rem !important;
+    // }
+    .row-1 {
+        font-size: 0.5rem;
+    }
+}
+
+
+/* DELETE BUTTON STYLE DESIGN */
+
+
+/* ASIDE STYLE DESIGN */
+.aside {
+    width: 25vw;
+    padding: 10px;
+}
+
+.aside-header {
+    text-align: center;
+    font-weight: 700;
+    color: #87bba2;
+    padding-top: 20px;
+}
+
+.aside-item {
+    padding: 20px;
+}
+
+@media screen and (max-width: 960px) {
+    .aside {
+        width: 100%;
+    }
+}
+
+/* ASIDE ITEM STYLE DESIGN */
+.aside-item-container {
+    padding: 10px 10px 5px 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    // background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../assets/images/img-8.jpeg');
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    // background-position: center;
+}
+
+.aside-item-container:hover {
+    background-color: #c9e4ca;
+    .aside-item-title {
+        color: #3b3b3b;
+    }
+    .aside-item-date {
+        color: #55828b;
+    }
+}
+
+.aside-item-title {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #c9e4ca;
+    font-weight: 700;
+    padding: 10px;
+    text-align: center;
+}
+
+.aside-link {
+    text-decoration: none;
+}
+
+.aside-item-date {
+    color: #87bba2;
+    display: flex;
+    font-style: italic;
+    justify-content: center;
+    align-items: center;
+    font-size: .8rem;
+}
+
+@media screen and (max-width: 960px) {
+    .aside-item-container {
+        width: 100%;
+    }
+}
+
+
+/* HOMEPAGE SYTLE DESIGN */
+.home {
+    background-color: #3b6064;
+}
+
+.home-body {
+    display: flex;
+}
+
+.main-container {
+    display: flex;
+    width: 75vw;
+    flex-direction: column;
+    padding: 10px 10px 30px 10px;
+}
+
+.main-title {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 700;
+    color: #87bba2;
+    padding-top: 20px;
+}
+
+.main-body-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #c9e4ca;
+    padding: 20px;
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.3);
+    border: 5px solid #fff;
+    overflow: hidden;
+    height: 500px;
+    width: 750px;
+}
+
+.img-big-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 960px) {
+    .home-body {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .main-container {
+        width: 100%;
+    }
+}
+
+
+/* HOMEHERO STYLE DESIGN */
+.home-hero-container {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../../assets/images/img-4.jpg');
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-hero-text {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: #c9e4ca;
+    font-size: 8rem;
+    // background-color: rgba(0, 0, 0, 0.2);
+    padding: 30px;
+}
+
+
+/* TEAMSPAGE HERO STYLE DESIGN */
+.teams-hero-container {
+    background-image: url('../../assets/images/img-5.jpg');
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.teams-hero-text {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: #c9e4ca;
+    font-size: 8rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 30px;
+}
+
+
+/* HEADER STYLE DESIGN */
+.navbar {
+    padding: 0vh 12vw 0vh 12vw;
+    height: 80px;
+    background-color: #364958;
+}
+
+.nav-items-container {
+    display: flex;
+    width: 76vw;
+    align-items: center;
+}
+
+.nav-menu {
+    display: flex;
+    margin-left: auto;
+}
+
+.nav-item {
+    padding: 0px 20px 0px 20px;
+}
+
+.nav-links, .navbar-logo {
+    text-decoration: none;
+    color: #c9e4ca;
+}
+
+.navbar-logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.menu-icon {
+    display: none;
+}
+
+@media screen and (max-width: 960px) {
+    .navbar {
+        padding: 0vh 10vw 0vh 10vw;
+    }
+
+    .navbar.active {
+        background-color: #364958;
+    }
+
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        top: 80px;
+        left: -100%;
+        opacity: 1;
+        transition: all 0.5s ease;
+        overflow: hidden;
+    }
+
+    .nav-menu.active {
+        background-color: #364958;
+        left: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 1;
+    }
+
+    .nav-links {
+        text-align: center;
+        padding: 2rem;
+        width: 100%;
+        display: table;
+    }
+
+    .nav-links:hover {
+        background-color: #c9e4ca;
+        color: #364958;
+        border-radius: 5px;
+    }
+
+    .nav-items-container {
+        justify-content: start;
+        width: 100%;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+    
+    .menu-icon {
+        display: flex;
+        margin-left: auto;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #c9e4ca;
+    }
+
+    .navbar-logo {
+        padding-left: 0px;
+    }
+    
+    .fa-times {
+        color: #c9e4ca;
+        font-size: 2rem;
+    }
+}
+
+
+/* FOOTER STYLE DESIGN */
+.footer-icons {
+    display: flex;
+    color: #87bba2;
+    padding: 25px;
+}
+
+.footer {
+    height: 250px;
+    background-color: #364958;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-text {
+    color: #87bba2;
+    padding: 30px;
+    text-align: center;
+}
+
+.fa-brands {
+    padding: 0px 10px 0px 10px;
+    font-size: 2rem;
+    cursor: pointer;
+}
