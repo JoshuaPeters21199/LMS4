@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TeamsTable from './TeamsTable/TeamsTable';
 import AlertList from './AlertList';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 function TeamListView({ viewModel, model }) {
     const [data, updateData] = useState(null);
@@ -65,7 +66,13 @@ function TeamListView({ viewModel, model }) {
                         handleReset();
                         setIsReset(!isReset);
                     }}
-                >Clear</Button>
+                >Clear</Button>{' '}
+
+                <Link to='./add-team'>
+                    <Button
+                        variant='primary'
+                    >New</Button>
+                </Link>
             </div>
         )
     );

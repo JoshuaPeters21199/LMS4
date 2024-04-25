@@ -38,7 +38,7 @@ function TeamRow({ team, id, onHandleDelete}) {
             <DeleteButton bodyText={deletePrompt} title='Delete Confirmation' noText='Cancel' confirmText='Delete' iconClass='delete-btn' itemKey={id} callback={onHandleDelete} />{' '}
             <Link to={`/edit-team/${id}`}>
               <Button className='m-2' variant='primary'>
-                <FaEdit className='edit-icon' />
+                <FaEdit />
               </Button>
             </Link>
           </td>

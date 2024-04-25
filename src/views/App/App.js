@@ -5,6 +5,7 @@ import Layout from '../../components/Layout/Layout';
 import NoMatch from '../../components/Router/NoMatch';
 import { TeamsContext } from "../../services/TeamsContext";
 import { useContext } from 'react';
+import EditTeam from '../../components/EditTeam/EditTeam';
 import './App.css';
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
         <Route path='/' element={<Layout logo={"RNR"} />}>
           <Route index element={<HomePage />} />
           <Route path='teams' element={<TeamsPage viewModel={teamsContext.viewModel} api={teamsContext.api} />} />
-          {/* <Route path='add-team' element={<EditTeam isCreate={true} api={teamsContext.api}/>} /> */}
+          <Route path='add-team' element={<EditTeam isCreate={true} api={teamsContext.api} />} />
+          <Route path='edit-team/:id' element={<EditTeam isCreate={false} api={teamsContext.api} />} />
           <Route path='*' element={<NoMatch />} />
         </Route>
       </Routes>
