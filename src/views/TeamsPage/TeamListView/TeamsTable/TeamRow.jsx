@@ -1,10 +1,10 @@
 import React from 'react';
 import DeleteButton from '../../../../components/Delete/DeleteButton';
-// import Button from 'react-bootstrap/Button';
+import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
-// import { FaEdit } from 'react-icons/fa';
-// import { Link } from 'react-router-dom';
+import { FaEdit } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 function TeamRow({ team, id, onHandleDelete}) {
     let deletePrompt = `Are you sure you want to delete team: ${team.name}`;
@@ -35,7 +35,12 @@ function TeamRow({ team, id, onHandleDelete}) {
           <td>{team.coachPhone}</td>
           <td>{team.coachEmail}</td>
           <td>
-            <DeleteButton bodyText={deletePrompt} title='Delete Confirmation' noText='Cancel' confirmText='Delete' iconClass='delete-btn' itemKey={id} callback={onHandleDelete} />
+            <DeleteButton bodyText={deletePrompt} title='Delete Confirmation' noText='Cancel' confirmText='Delete' iconClass='delete-btn' itemKey={id} callback={onHandleDelete} />{' '}
+            <Link to={`/edit-team/${id}`}>
+              <Button className='m-2' variant='primary'>
+                <FaEdit className='edit-icon' />
+              </Button>
+            </Link>
           </td>
         </tr>
       </OverlayTrigger>

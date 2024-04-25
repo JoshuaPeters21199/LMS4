@@ -11991,7 +11991,11 @@ textarea.form-control-lg {
     font-size: 0.5rem;
   }
 }
-/* DELETE BUTTON STYLE DESIGN */
+/* EDIT BUTTON STYLE DESIGN */
+.edit-icon:hover {
+  cursor: pointer;
+}
+
 /* ASIDE STYLE DESIGN */
 .aside {
   width: 25vw;
