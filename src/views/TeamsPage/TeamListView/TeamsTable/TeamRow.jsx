@@ -32,8 +32,8 @@ function TeamRow({ team, id, onHandleDelete}) {
         <tr key={id}>
           <td>{team.name}</td>
           <td>{team.coachName}</td>
-          <td>{team.coachPhone}</td>
-          <td>{team.coachEmail}</td>
+          <td>{team.motto}</td>
+          <td>{team.notes}</td>
           <td>
             <DeleteButton bodyText={deletePrompt} title='Delete Confirmation' noText='Cancel' confirmText='Delete' iconClass='delete-btn' itemKey={id} callback={onHandleDelete} />{' '}
             <Link to={`/edit-team/${id}`}>

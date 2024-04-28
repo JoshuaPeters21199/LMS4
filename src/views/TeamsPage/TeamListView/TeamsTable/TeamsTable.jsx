@@ -24,7 +24,7 @@ function TeamsTable({ teams, sortCol, sortDir, viewModel, onHandleDelete, onHand
                     </thead>
                     <tbody>
                         {teams.map((i) => (
-                            <TeamRow team={{name: i.name, coachName: i.coachName, coachPhone: i.coachPhone, coachEmail: i.coachEmail, motto: i.motto, logo: i.logo_path}} id={i.id} onHandleDelete={onHandleDelete} key={i.id} />
+                            <TeamRow team={{name: i.name, coachName: i.coachName, coachPhone: i.coachPhone, coachEmail: i.coachEmail, motto: i.motto, notes: i.notes, logo: i.logo_path}} id={i.id} onHandleDelete={onHandleDelete} key={i.id} />
                         ))}
                     </tbody>
                 </Table>

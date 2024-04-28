@@ -61,6 +61,10 @@ export default class LocalStorageService {
  
       return this.model.data;
     }
+
+    async getLookup(lookup) {
+      return this.model.lookups[lookup];
+    }
  
     //CRUD FUNCTIONS
     async create(obj) {

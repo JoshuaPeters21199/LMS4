@@ -10,7 +10,7 @@ import './App.css';
 
 function App() {
   let teamsContext = useContext(TeamsContext);
-  // console.log(teamsContext.api.model.sortCol)
+  // console.log(teamsContext.api)
   // console.log(teamsContext.viewModel);
 
   return (

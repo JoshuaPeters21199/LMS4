@@ -7,7 +7,7 @@ function TeamHeaderRow({ columnArr, sortCol, sortDir, onHandleSort }) {
         <>
             <tr>
                 {columnArr.map((i) => (
-                    <TeamHeaderCol label={i.label} colName={i.name} sortCol={sortCol} sortDir={sortDir} onHandleSort={onHandleSort} />
+                    <TeamHeaderCol key={i.label} label={i.label} colName={i.name} sortCol={sortCol} sortDir={sortDir} onHandleSort={onHandleSort} />
                 ))}
 
                 <th>Actions</th>

@@ -4,18 +4,18 @@ import {FaSort} from 'react-icons/fa'
 
 function TeamHeaderCol({ label, colName, sortCol, sortDir, onHandleSort }) {
 
-    const localHanlder = () => onHandleSort(sortCol)
+    const localHanlder = () => {
+        sortCol = colName;
+        onHandleSort(sortCol)
+    }
 
     let sortIcon;
 
-    if (sortDir === 'desc') {
+    if (sortDir === 'dsc') {
         sortIcon = <FaSortDown />
     } else if (sortDir === 'asc') {
         sortIcon = <FaSortUp />
-    } else {
-        sortIcon = <FaSort />
     }
-
 
     return(
         <>

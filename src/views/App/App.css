@@ -12135,10 +12135,10 @@ textarea.form-control-lg {
 /* HOMEHERO STYLE DESIGN */
 .home-hero-container {
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../../assets/images/img-4.jpg");
-  background-position: top;
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 700px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12159,10 +12159,10 @@ textarea.form-control-lg {
 /* TEAMSPAGE HERO STYLE DESIGN */
 .teams-hero-container {
   background-image: url("../../assets/images/img-5.jpg");
-  background-position: top;
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 700px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12218,6 +12218,9 @@ textarea.form-control-lg {
 }
 
 @media screen and (max-width: 960px) {
+  .home-hero-container, .teams-hero-container {
+    height: 100vh;
+  }
   .navbar {
     padding: 0vh 10vw 0vh 10vw;
   }
@@ -12303,4 +12306,21 @@ textarea.form-control-lg {
   padding: 0px 10px 0px 10px;
   font-size: 2rem;
   cursor: pointer;
+}
+
+/* FORMS STYLE */
+.form-container {
+  height: 700px;
+  padding-top: 20px;
+}
+
+@media screen and (max-width: 960px) {
+  .form-container {
+    height: 100vh;
+  }
+}
+/* SEARCH BAR STYLE */
+.search-container {
+  display: flex;
+  padding: 0px 0px 15px 0px;
 }/*# sourceMappingURL=App.css.map */
