@@ -12322,5 +12322,8 @@ textarea.form-control-lg {
 /* SEARCH BAR STYLE */
 .search-container {
   display: flex;
+  flex-direction: column;
   padding: 0px 0px 15px 0px;
+  width: 25vw;
+  justify-content: space-between;
 }/*# sourceMappingURL=App.css.map */

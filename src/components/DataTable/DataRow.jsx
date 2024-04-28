@@ -1,12 +1,12 @@
 import React from 'react';
-import DeleteButton from '../../../../components/Delete/DeleteButton';
+import DeleteButton from '../Delete/DeleteButton';
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import { FaEdit } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-function TeamRow({ team, id, onHandleDelete}) {
+function DataRow({ team, id, onHandleDelete}) {
     let deletePrompt = `Are you sure you want to delete team: ${team.name}`;
     const popover = (
       <Popover id="popover-basic">
@@ -24,7 +24,6 @@ function TeamRow({ team, id, onHandleDelete}) {
     return (
       <OverlayTrigger
         trigger={["hover","focus"]}
-        // trigger='click'
         placement="auto"
         overlay={popover}
         delay={{ show: 300, hide: 200 }}
@@ -47,4 +46,4 @@ function TeamRow({ team, id, onHandleDelete}) {
     );
 }
   
-export default TeamRow;
+export default DataRow;

@@ -1,10 +1,10 @@
 import React from 'react';
 import TeamHeaderRow from './TeamHeaderRow';
 import Table from 'react-bootstrap/Table';
-import TeamRow from './TeamRow';
+import TeamRow from './DataRow';
 
 
-function TeamsTable({ teams, sortCol, sortDir, viewModel, onHandleDelete, onHandleSort, onHandleEdit }) {
+function DataTable({ teams, sortCol, sortDir, viewModel, onHandleDelete, onHandleSort, onHandleEdit }) {
     // console.log(teams)
     let columns = viewModel.list.columns;
     // console.log(columns);
@@ -33,4 +33,4 @@ function TeamsTable({ teams, sortCol, sortDir, viewModel, onHandleDelete, onHand
     );
 }
 
-export default TeamsTable;
+export default DataTable;

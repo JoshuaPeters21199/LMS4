@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import TeamsTable from './TeamsTable/TeamsTable';
-import AlertList from './AlertList';
+import TeamsTable from '../DataTable/DataTable';
+import AlertList from '../AlertList/AlertList';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
-// import SearchBar from '../../../components/SearchBar/SearchBar';
+import SearchBar from '../SearchBar/SearchBar';
 
-function TeamListView({ viewModel, model }) {
+function ListView({ viewModel, model }) {
     const [data, updateData] = useState(null);
 
     const [sortCol, setSortCol] = useState(viewModel.list.options.sortCol);
@@ -27,10 +27,6 @@ function TeamListView({ viewModel, model }) {
     const handleEdit = () => {};
 
     const handleSort = (clickedSortCol) => {
-        // console.log(`sortCol: ${sortCol}`)
-        // console.log(`clickedSortCol: ${clickedSortCol}`)
-        // console.log(`model.sortCol: ${model.sortCol}`)
-        // console.log(`sortDir: ${sortDir}`)
 
         if (model.sortCol === clickedSortCol) {
             if (sortDir === 'asc') {
@@ -45,25 +41,20 @@ function TeamListView({ viewModel, model }) {
 
         model.sortCol = sortCol;
         model.sort(sortCol, sortDir)
-
-        // console.log(`new sortCol: ${sortCol}`)
-        // console.log(`new clickedSortCol: ${clickedSortCol}`)
-        // console.log(`new model.sortCol: ${model.sortCol}`)
-        // console.log(`new sortDir: ${sortDir}`)
     };
 
     const handleReset = () => {
         model.reset();
     };
 
-    // const onSearchHandler = (text) => {
-    //     if (text.length > 2) {
-    //         setFilterStr(text);
-    //     } else {
-    //         setFilterStr('');
-    //     }
-    //     setFilterText(text);
-    // }
+    const onSearchHandler = (text) => {
+        if (text.length > 2) {
+            setFilterStr(text);
+        } else {
+            setFilterStr('');
+        }
+        setFilterText(text);
+    }
 
     useEffect(() => {
         model.sortCol = sortCol;
@@ -73,21 +64,21 @@ function TeamListView({ viewModel, model }) {
         model.list().then((teams) => updateData(teams));
     }, [isReset, sortCol, sortDir, filterStr, alertList, teamDelete, model]);
 
-    // const clearSearch = () => {
-    //     setFilterText('');
-    //     setFilterStr('')
-    // }
+    const clearSearch = () => {
+        setFilterText('');
+        setFilterStr('')
+    }
 
     return(
         data && (
             <div className='col-12'>
                 <AlertList alertList={alertList} />
 
-                {/* <SearchBar
+                <SearchBar
                     onSearchHandler={onSearchHandler}
                     filterText={filterText}
                     clearSearch={clearSearch}
-                /> */}
+                />
 
                 <TeamsTable
                     teams={data}
@@ -117,4 +108,4 @@ function TeamListView({ viewModel, model }) {
     );
 }
 
-export default TeamListView;
+export default ListView;

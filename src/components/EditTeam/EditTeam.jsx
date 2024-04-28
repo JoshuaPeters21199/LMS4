@@ -10,8 +10,6 @@ function EditTeam({ isCreate, api}) {
     const {id} = useParams();
     const teamId = !isCreate?id:"";
 
-    const title = !isCreate ? "Edit Team" : "Add Team";
-
     const [formData, setFormData] = useState({
         id: 0,
         name: '',
@@ -19,6 +17,16 @@ function EditTeam({ isCreate, api}) {
         motto: '',
         notes: ''
     });
+
+    const title = !isCreate ? `Edit Team ${formData.name}` : "Add Team";
+
+    // const [formData, setFormData] = useState({
+    //     id: 0,
+    //     name: '',
+    //     coachName: '',
+    //     motto: '',
+    //     notes: ''
+    // });
     const [coachOptions, setCoachOptions] = useState([]);
     const [validated, setValidated] = useState(false);
 
