@@ -1,7 +1,8 @@
 // import LocalStorageService from "./LocalStorage.service";
 import LocalStorageService from './localStorageService.service';
 
-//import RestStorageService from "./RestStorage.service";  //LMS6
+//LMS6
+import RestStorageService from "./RestStorageService";
 
 let appViewModel = {
 
@@ -10,25 +11,26 @@ let appViewModel = {
       logo: "/images/bbq-party-logo.jpg",
       title: "Ken Jenson's BBQ League",
     },
-    isMock: true,
+    // isMock: true,
 
   
-    // endPoint: {
-    //   host: "localhost",
-    //   port: "8080",
-    //   protocol: "http",
-    //   apiPrefix:"api/v1"
-    // },
+    endPoint: {
+      host: "localhost",
+      port: "8080",
+      protocol: "http",
+      apiPrefix:"api/v1"
+    },
 
-    //endPoint: {
+  //   endPoint: {
 
-      //host: "kjj-teams-api-fall23-env.eba-wa2da9ar.us-east-1.elasticbeanstalk.com",
+  //     host: "kjj-teams-api-fall23-env.eba-wa2da9ar.us-east-1.elasticbeanstalk.com",
 
-      //port: "80",
+  //     port: "80",
 
-      //protocol: "http"
+  //     protocol: "http"
 
-   // },
+  //  },
+   isMock: false,
 
   },
 
@@ -276,14 +278,14 @@ let appViewModel = {
     let model = this.entities[entity];
 
     if (this.app.isMock) {
-      return new LocalStorageService(model, entity);
+      return new LocalStorageService(this.entities[entity], entity);
     } else {
       //LMS6 Only
-      //return new RestStorageService(
-        //entity,
-       // this.app.endPoint,
-       // model.list.options
-     // );
+      return new RestStorageService(
+        entity,
+       this.app.endPoint,
+       model.list.options
+     );
     }
   },
 };
