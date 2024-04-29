@@ -8,14 +8,15 @@ import SearchBar from '../SearchBar/SearchBar';
 function ListView({ viewModel, model }) {
     const [data, updateData] = useState(null);
 
-    const [sortCol, setSortCol] = useState(viewModel.list.options.sortCol);
-    const [sortDir, setSortDir] = useState(model.sortDir);
+    const [sortCol, setSortCol] = useState(model.options.sortCol);
+    // const [sortCol, setSortCol] = useState(model.sortCol);
+    const [sortDir, setSortDir] = useState(model.options.sortDir);
 
     const [isReset, setIsReset] = useState(false);
     const [alertList, setAlertList] = useState([]);
 
     const [filterText, setFilterText] = useState('');
-    const [filterStr, setFilterStr] = useState(model.filterStr);
+    const [filterStr, setFilterStr] = useState(model.options.filterStr);
 
     const [teamDelete, setTeamDelete] = useState(false);
 
@@ -28,10 +29,10 @@ function ListView({ viewModel, model }) {
 
     const handleSort = (clickedSortCol) => {
 
-        if (model.sortCol === clickedSortCol) {
+        if (model.options.sortCol === clickedSortCol) {
             if (sortDir === 'asc') {
-                setSortDir('dsc');
-            } else if (sortDir === 'dsc') {
+                setSortDir('desc');
+            } else if (sortDir === 'desc') {
                 setSortDir('asc');
             }
         } else {
@@ -39,7 +40,7 @@ function ListView({ viewModel, model }) {
             setSortDir('asc')
         }
 
-        model.sortCol = sortCol;
+        model.options.sortCol = sortCol;
         model.sort(sortCol, sortDir)
     };
 
@@ -57,9 +58,9 @@ function ListView({ viewModel, model }) {
     }
 
     useEffect(() => {
-        model.sortCol = sortCol;
-        model.sortDir = sortDir;
-        model.filterStr = filterStr;
+        model.options.sortCol = sortCol;
+        model.options.sortDir = sortDir;
+        model.options.filterStr = filterStr;
 
         model.list().then((teams) => updateData(teams));
     }, [isReset, sortCol, sortDir, filterStr, alertList, teamDelete, model]);
@@ -82,8 +83,8 @@ function ListView({ viewModel, model }) {
 
                 <TeamsTable
                     teams={data}
-                    sortCol={model.sortCol}
-                    sortDir={model.sortDir}
+                    sortCol={model.options.sortCol}
+                    sortDir={model.options.sortDir}
                     viewModel={viewModel}
                     onHandleDelete={handleDelete}
                     onHandleSort={handleSort}

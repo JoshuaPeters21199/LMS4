@@ -9,9 +9,10 @@ import EditTeam from '../../components/EditTeam/EditTeam';
 import './App.css';
 
 function App() {
-  let teamsContext = useContext(TeamsContext);
+  let teamsContext = useContext(TeamsContext("teams"));
+  // console.log(`api: ${teamsContext.api}`);
+  // console.log(`viewModel: ${teamsContext.viewModel}`);
   // console.log(teamsContext.api)
-  // console.log(teamsContext.viewModel);
 
   return (
     <div>

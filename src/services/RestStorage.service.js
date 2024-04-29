@@ -2,8 +2,9 @@ import Utils from "../util/utilities";
 
 export default class RestStorageService {
     "use strict"
-    constructor(entity, endPoint, options = {}) {
+    constructor(entity, entitySingle, endPoint, options = {}) {
        this.entity = entity;
+       this.entitySingle = entitySingle;
 
        this.model = {};
        this.options = options;
@@ -31,16 +32,24 @@ export default class RestStorageService {
     set filterCol(col){
        this.model.list.options.filterCol=col;
     }
-    /*KJ: Todo add filterStr*/
     get filterStr(){
       return this.model.list.options.filterStr;
    }
    set filterStr(filterStr){
       this.model.list.options.filterStr=filterStr;
    }
-    get size() {
-       //TODO: should return the number of items in model.data
+   get limit() {
+      return this.model.options.limit;
+   }
+   set limit(limit) {
+      this.model.options.limit = limit;
+   }
+   get size() {
        return this.model.data.length;
+   }
+
+   get offset() {
+      return this.model.options.offset;
    }
 
    get options() {
@@ -60,7 +69,8 @@ export default class RestStorageService {
    }
 
    get apiName() {
-      return `${this.entity}`;
+      return this.entity;
+      // return `${this.entity}`;
    }
 
    get hostPrefix() {
@@ -81,7 +91,13 @@ export default class RestStorageService {
    
     async list() {
       let url = `${this.apiUrl}/${Utils.getQueryString(this.options)}`;
-      return await this.doQuery(url);
+      try {
+         return await this.doQuery(url, {method:"GET"});
+      } catch(msg) {
+         console.log(msg);
+         throw msg;
+      }
+      // return await this.doQuery(url);
     }
 
     async getLookup(lookupName) {
@@ -96,7 +112,7 @@ export default class RestStorageService {
          const response = await this.doQuery(url, {
             method: 'POST',
             header: {
-               'content-type': 'application/json'
+               'Content-Type': 'application/json'
             },
             body: JSON.stringify(obj)
          });
@@ -141,30 +157,17 @@ export default class RestStorageService {
  
     //LocalStorage Functions
     reset() {
-       //TODO-IMPLEMENT FIRST
-       //should clear local storage 
-       //should restore model from origModel 
-       //(use utility function 'cloneObject' at bottom of file)
        localStorage.clear();
        this.model = this.cloneObject(this.origModel);
        this.store();
     }
     clear() {
-       //TODO-IMPLEMENT FIRST
-       //TODO: should clear local storage
        localStorage.clear();
     }
     store() {
-       //TODO-IMPLEMENT FIRST
-       //TODO: should store 'this.model' in localStorage
        localStorage.setItem(this.key, JSON.stringify(this.model));
     }
     retrieve() {
-      //TODO
-         //should retrieve your model from localStorage using this.key
-         //If data retrieved from LocalStorage, updates this.model
-         //hint:  remember to 'parse' the LocalStorage string value back into an object!
-         //return true if model retrieved from localStorage, false if key wasn't found in localStorage 
          const storedData = localStorage.getItem(this.key);
          if (storedData) {
           this.model = JSON.parse(storedData);
@@ -175,12 +178,6 @@ export default class RestStorageService {
  
     //Sorting and Filtering Functions
     sort(col, direction) {
-       //TODO
-         //returns a copy of the model.data (util func 'cloneArray'), sorted using the 'col' and 'direction' specifications (see index.html for example)
-         // storageSvc.sort('name','asc')
-         // if 'perm' param is set to true, you should update the internal model.data 
-         //with the sorted list, and call 'store' to store in local storage
-         //also, store the sort col and direction in the 'app' portion of the model
        const sortedData = this.cloneObject(this.model.data).sort((a, b) => {
           if (direction === 'asc') {
             return a[col] > b[col] ? 1 : -1;
@@ -197,11 +194,6 @@ export default class RestStorageService {
     }
  
     filter(filterObj) {
-         //returns a copy of the filtered array
-         //filterObj contains an object with all the key/value pairs you 
-         //will filter model.data with.
-         //See MDN array 'filter' function documentation
-         //Example call: storageSvc.filter({coachLicenseLevel:1,coachLast:"Jenson"});
        return this.model.data.filter(item => {
           for (const key in filterObj) {
             if (item[key] !== filterObj[key]) {
@@ -214,29 +206,21 @@ export default class RestStorageService {
  
  
     //Utility functions
-
     async doQuery(url, options) {
       try {
          const response = await fetch(url, options);
-         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-         }
          return await response.json();
-      } catch (error) {
-         throw error;
+      } catch (err) {
+         throw err;
       }
     }
 
-    getItemIndex(id){
-       //TODO-IMPLEMENT FIRST
-       //return index of team with given id
-       //see MDN array 'findIndex' documentation  
-       //created separate function for this since multiple methods need to get the index of an item
+   getItemIndex(id){
        return this.model.data.findIndex(item => item.id === id);
  
     }
 
-    static cloneObject(obj){
+   cloneObject(obj){
        return JSON.parse(JSON.stringify(obj));
     }
  

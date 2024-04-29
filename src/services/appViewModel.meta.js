@@ -2,7 +2,7 @@
 import LocalStorageService from './localStorageService.service';
 
 //LMS6
-import RestStorageService from "./RestStorageService";
+import RestStorageService from "./RestStorage.service";
 
 let appViewModel = {
 
@@ -11,7 +11,7 @@ let appViewModel = {
       logo: "/images/bbq-party-logo.jpg",
       title: "Ken Jenson's BBQ League",
     },
-    // isMock: true,
+    isMock: false,
 
   
     endPoint: {
@@ -30,7 +30,7 @@ let appViewModel = {
   //     protocol: "http"
 
   //  },
-   isMock: false,
+  //  isMock: false,
 
   },
 
@@ -283,8 +283,9 @@ let appViewModel = {
       //LMS6 Only
       return new RestStorageService(
         entity,
-       this.app.endPoint,
-       model.list.options
+        this.entities[entity].entitySingle,
+        this.app.endPoint,
+        model.list.options
      );
     }
   },
